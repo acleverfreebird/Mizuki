@@ -78,7 +78,9 @@ const initialLayoutClass =
           // 即使布局正确，也要确保按钮状态正确
           const toggleButton = document.getElementById('right-sidebar-toggle');
           if (toggleButton) {
-            if (currentLayout === 'grid') {
+            // 检查是否为桌面端（lg 断点是 1024px）
+            const isDesktop = window.innerWidth >= 1024;
+            if (currentLayout === 'grid' || !isDesktop) {
               (toggleButton as HTMLElement).style.display = 'none';
             } else {
               (toggleButton as HTMLElement).style.display = 'flex';
@@ -98,14 +100,10 @@ const initialLayoutClass =
         // 移动端：只添加初始化标记，不更改布局（CSS已处理）
         postListContainer.classList.add("js-initialized");
         
-        // 移动端也需要更新按钮状态
+        // 移动端按钮始终隐藏
         const toggleButton = document.getElementById('right-sidebar-toggle');
         if (toggleButton) {
-          if (currentLayout === 'grid') {
-            (toggleButton as HTMLElement).style.display = 'none';
-          } else {
-            (toggleButton as HTMLElement).style.display = 'flex';
-          }
+          (toggleButton as HTMLElement).style.display = 'none';
         }
       }
       
@@ -120,6 +118,20 @@ const initialLayoutClass =
 
     // 添加切换动画类
     postListContainer.classList.add("layout-switching");
+
+    // 立即更新按钮状态（在布局更新之前）
+    const toggleButton = document.getElementById('right-sidebar-toggle');
+    if (toggleButton) {
+      // 检查是否为桌面端（lg 断点是 1024px）
+      const isDesktop = window.innerWidth >= 1024;
+      if (layout === 'grid' || !isDesktop) {
+        // 网格模式或移动端隐藏按钮
+        (toggleButton as HTMLElement).style.display = 'none';
+      } else {
+        // 列表模式且桌面端显示按钮
+        (toggleButton as HTMLElement).style.display = 'flex';
+      }
+    }
 
     // 移除现有布局类
     postListContainer.classList.remove("list-mode", "grid-mode");
@@ -137,12 +149,6 @@ const initialLayoutClass =
         (rightSidebar as HTMLElement).classList.add('hidden-in-grid-mode');
       }
       
-      // 同时隐藏右侧边栏控制按钮
-      const toggleButton = document.getElementById('right-sidebar-toggle');
-      if (toggleButton) {
-        (toggleButton as HTMLElement).style.display = 'none';
-      }
-      
       // 调整主网格布局以使用更多空间
       const mainGrid = document.getElementById('main-grid');
       if (mainGrid) {
@@ -158,12 +164,6 @@ const initialLayoutClass =
       const rightSidebar = document.querySelector('.right-sidebar-container');
       if (rightSidebar) {
         (rightSidebar as HTMLElement).classList.remove('hidden-in-grid-mode');
-      }
-      
-      // 同时显示右侧边栏控制按钮
-      const toggleButton = document.getElementById('right-sidebar-toggle');
-      if (toggleButton) {
-        (toggleButton as HTMLElement).style.display = 'flex';
       }
       
       // 恢复主网格布局

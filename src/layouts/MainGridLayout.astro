@@ -271,7 +271,9 @@ const transparentClass = shouldEnableTransparency
 				// 根据布局模式显示或隐藏右侧边栏控制按钮
 				const toggleButton = document.getElementById('right-sidebar-toggle');
 				if (toggleButton) {
-					if (currentLayout === 'grid') {
+					// 检查是否为桌面端
+					const isDesktop = window.innerWidth >= 1280;
+					if (currentLayout === 'grid' || !isDesktop) {
 						toggleButton.style.display = 'none';
 					} else {
 						toggleButton.style.display = 'flex';
@@ -310,11 +312,14 @@ const transparentClass = shouldEnableTransparency
 		// 根据当前布局模式显示/隐藏按钮
 		function updateToggleButtonVisibility() {
 			const currentLayout = mainGrid.getAttribute('data-layout-mode') || defaultPostListLayout;
-			if (currentLayout === 'grid') {
-				// 网格模式下隐藏按钮
+			// 检查是否为桌面端（lg 断点是 1280px）
+			const isDesktop = window.innerWidth >= 1280;
+			
+			if (currentLayout === 'grid' || !isDesktop) {
+				// 网格模式下或移动端隐藏按钮
 				toggleButton.style.display = 'none';
 			} else {
-				// 列表模式下显示按钮
+				// 列表模式下且在桌面端显示按钮
 				toggleButton.style.display = 'flex';
 			}
 		}
@@ -455,6 +460,8 @@ const transparentClass = shouldEnableTransparency
 			resizeTimeout = setTimeout(function() {
 				updateToggleButtonPosition();
 				handleResponsiveCollapse();
+				// 窗口大小变化时也要检查按钮是否应该显示
+				updateToggleButtonVisibility();
 			}, 100);
 		});
 		
@@ -467,7 +474,25 @@ const transparentClass = shouldEnableTransparency
 		
 		// 监听布局模式切换事件
 		window.addEventListener('layoutChange', function(event) {
-			updateToggleButtonVisibility();
+			// 直接从事件中获取布局模式，而不是从 DOM 中读取
+			const newLayout = event.detail?.layout;
+			// 检查是否为桌面端
+			const isDesktop = window.innerWidth >= 1280;
+
+			if (newLayout) {
+				if (newLayout === 'grid' || !isDesktop) {
+					// 网格模式下或移动端隐藏按钮
+					toggleButton.style.display = 'none';
+				} else {
+					// 列表模式下且在桌面端显示按钮
+					toggleButton.style.display = 'flex';
+					// 列表模式下，更新按钮位置以确保位置正确
+					setTimeout(updateToggleButtonPosition, 100);
+				}
+			} else {
+				// 降级处理：如果事件中没有布局信息，延迟后从 DOM 读取
+				setTimeout(updateToggleButtonVisibility, 50);
+			}
 		});
 	}
 	
@@ -620,7 +645,9 @@ const transparentClass = shouldEnableTransparency
 					// 根据布局模式显示或隐藏右侧边栏控制按钮
 					const toggleButton = document.getElementById('right-sidebar-toggle');
 					if (toggleButton) {
-						if (currentLayout === 'grid') {
+						// 检查是否为桌面端
+						const isDesktop = window.innerWidth >= 1280;
+						if (currentLayout === 'grid' || !isDesktop) {
 							toggleButton.style.display = 'none';
 						} else {
 							toggleButton.style.display = 'flex';
@@ -694,7 +721,13 @@ const transparentClass = shouldEnableTransparency
 						rightSidebar.classList.remove('hidden-in-grid-mode');
 					}
 					if (toggleButton) {
-						toggleButton.style.display = 'flex';
+						// 检查是否为桌面端
+						const isDesktop = window.innerWidth >= 1280;
+						if (isDesktop) {
+							toggleButton.style.display = 'flex';
+						} else {
+							toggleButton.style.display = 'none';
+						}
 					}
 				}
 			}
@@ -718,6 +751,17 @@ const transparentClass = shouldEnableTransparency
 					}
 					if (toggleButton) {
 						toggleButton.style.display = 'none';
+					}
+				} else {
+					// 列表模式
+					if (toggleButton) {
+						// 检查是否为桌面端
+						const isDesktop = window.innerWidth >= 1280;
+						if (isDesktop) {
+							toggleButton.style.display = 'flex';
+						} else {
+							toggleButton.style.display = 'none';
+						}
 					}
 				}
 			}
