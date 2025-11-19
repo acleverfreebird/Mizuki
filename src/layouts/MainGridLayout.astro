@@ -422,6 +422,19 @@ const transparentClass = shouldEnableTransparency
 		// 初始检查宽度
 		handleResponsiveCollapse();
 		
+		// 自动隐藏提示的定时器
+		let autoHideTipTimeout;
+		
+		// 如果侧边栏收起，显示提示并在3秒后自动隐藏
+		if (isRightSidebarCollapsed && toggleTip) {
+			toggleTip.style.opacity = '0.85';
+			autoHideTipTimeout = setTimeout(function() {
+				if (toggleTip && !toggleButton.matches(':hover')) {
+					toggleTip.style.opacity = '0';
+				}
+			}, 3000);
+		}
+		
 		// 点击按钮切换状态
 		toggleButton.addEventListener('click', function(e) {
 			e.preventDefault();
@@ -433,10 +446,25 @@ const transparentClass = shouldEnableTransparency
 			// 移除自动收起标记
 			toggleButton?.removeAttribute('data-auto-collapsed');
 			applyRightSidebarState(true);
+			
+			// 清除之前的自动隐藏定时器
+			clearTimeout(autoHideTipTimeout);
+			
+			// 如果切换后是收起状态，3秒后自动隐藏提示
+			if (isRightSidebarCollapsed && toggleTip) {
+				toggleTip.style.opacity = '0.85';
+				autoHideTipTimeout = setTimeout(function() {
+					if (toggleTip && !toggleButton.matches(':hover')) {
+						toggleTip.style.opacity = '0';
+					}
+				}, 3000);
+			}
 		});
 		
 		// 鼠标悬停显示提示
 		toggleButton.addEventListener('mouseenter', function() {
+			// 清除自动隐藏定时器
+			clearTimeout(autoHideTipTimeout);
 			if (toggleTip) {
 				toggleTip.style.opacity = '1';
 			}
@@ -444,9 +472,14 @@ const transparentClass = shouldEnableTransparency
 		
 		toggleButton.addEventListener('mouseleave', function() {
 			if (toggleTip) {
-				// 如果右边栏已收起，保持提示可见（半透明）
+				// 如果右边栏已收起，启动自动隐藏定时器
 				if (isRightSidebarCollapsed) {
 					toggleTip.style.opacity = '0.85';
+					autoHideTipTimeout = setTimeout(function() {
+						if (toggleTip && !toggleButton.matches(':hover')) {
+							toggleTip.style.opacity = '0';
+						}
+					}, 3000);
 				} else {
 					toggleTip.style.opacity = '0';
 				}
