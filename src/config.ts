@@ -12,6 +12,7 @@ import type {
 	SakuraConfig,
 	SidebarLayoutConfig,
 	SiteConfig,
+	ShareConfig,
 } from "./types/config";
 import { LinkPreset } from "./types/config";
 
@@ -359,6 +360,10 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	type: "playlist", // 播单类型
 };
 
+export const shareConfig: ShareConfig = {
+	enable: true, // 启用分享功能。当设置为 false 时，分享组件将不会显示在文章区域，且不会加载分享组件使用的库
+};
+
 export const footerConfig: FooterConfig = {
 	enable: false, // 是否启用Footer HTML注入功能
 	customHtml: "", // HTML格式的自定义页脚信息，例如备案号等，默认留空
@@ -580,6 +585,7 @@ export const widgetConfigs = {
 	sakura: sakuraConfig,
 	fullscreenWallpaper: fullscreenWallpaperConfig,
 	pio: pioConfig, // 添加 pio 配置
+	share: shareConfig,
 } as const;
 
 export const umamiConfig = {
