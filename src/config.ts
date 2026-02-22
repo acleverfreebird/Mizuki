@@ -211,23 +211,22 @@ export const siteConfig: SiteConfig = {
 export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
 	src: {
 		desktop: [
-			"/assets/desktop-banner/banner_1.png",
-			"/assets/desktop-banner/banner_2.png",
-			"/assets/desktop-banner/banner_3.png",
-			"/assets/desktop-banner/banner_4.png",
-			"/assets/desktop-banner/banner_5.png",
-			"/assets/desktop-banner/banner_6.png",
-			"/assets/desktop-banner/banner_7.png",
+			"/assets/desktop-banner/banner_1.jpg",
+			"/assets/desktop-banner/banner_2.jpg",
+			"/assets/desktop-banner/banner_3.jpg",
+			"/assets/desktop-banner/banner_4.jpg",
+			"/assets/desktop-banner/banner_5.jpg",
+			"/assets/desktop-banner/banner_6.jpg",
+			"/assets/desktop-banner/banner_7.jpg",
 		], // 桌面横幅图片
 		mobile: [
-			"/assets/desktop-banner/banner_1.png",
-			"/assets/desktop-banner/banner_2.png",
-			"/assets/desktop-banner/banner_3.png",
-			"/assets/desktop-banner/banner_4.png",
-			"/assets/desktop-banner/banner_5.png",
-			"/assets/desktop-banner/banner_6.png",
-			"/assets/desktop-banner/banner_7.png",
-			"/assets/desktop-banner/banner_8.png",
+			"/assets/desktop-banner/banner_1.jpg",
+			"/assets/desktop-banner/banner_2.jpg",
+			"/assets/desktop-banner/banner_3.jpg",
+			"/assets/desktop-banner/banner_4.jpg",
+			"/assets/desktop-banner/banner_5.jpg",
+			"/assets/desktop-banner/banner_6.jpg",
+			"/assets/desktop-banner/banner_7.jpg",
 		], // 移动横幅图片
 	}, // 使用本地横幅图片
 	position: "center", // 壁纸位置，等同于 object-position
