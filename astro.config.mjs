@@ -38,7 +38,7 @@ export default defineConfig({
 
 	integrations: [
 		umami({
-			shareUrl: false,
+			shareUrl: "https://views.freebird2913.tech/share/UnChWZkxBJnsZ6oS",
 		}),
 		tailwind({
 			nesting: true,

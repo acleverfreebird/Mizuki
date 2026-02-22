@@ -58,9 +58,9 @@ interface Props {
 		byCategory: {
 			frontend: number;
 			backend: number;
-			database: number;
+			database?: number;
 			tools: number;
-			other: number;
+			other?: number;
 		};
 	};
 	totalExperience: {
@@ -125,7 +125,7 @@ const categoryData = [
 	},
 	{
 		name: i18n(I18nKey.skillsDatabase),
-		value: stats.byCategory.database,
+		value: stats.byCategory.database ?? 0,
 		color: categoryColors.database,
 	},
 	{
@@ -135,7 +135,7 @@ const categoryData = [
 	},
 	{
 		name: i18n(I18nKey.skillsOther),
-		value: stats.byCategory.other,
+		value: stats.byCategory.other ?? 0,
 		color: categoryColors.other,
 	},
 ];
