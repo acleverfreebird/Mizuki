@@ -218,7 +218,6 @@ export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
 			"/assets/desktop-banner/banner_5.png",
 			"/assets/desktop-banner/banner_6.png",
 			"/assets/desktop-banner/banner_7.png",
-			"/assets/desktop-banner/banner_8.png",
 		], // 桌面横幅图片
 		mobile: [
 			"/assets/desktop-banner/banner_1.png",
