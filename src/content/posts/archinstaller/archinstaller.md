@@ -8,7 +8,6 @@ category: 'Linux'
 draft: false
 lang: 'zh-CN'
 ---
-# ArchLinux 基础安装教程
 
 > ## 前言
 >

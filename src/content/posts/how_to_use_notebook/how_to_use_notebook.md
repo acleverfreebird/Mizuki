@@ -8,7 +8,6 @@ category: 'Python'
 draft: false
 lang: 'zh-CN'
 ---
-# Python Notebook小白入门指南：从安装到实战
 
 ## 一、什么是Python Notebook？
 

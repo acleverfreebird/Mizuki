@@ -14,9 +14,6 @@ readingTime: 15
 series: "Astro开发指南"
 seriesOrder: 1
 ---
-
-# 完整指南：从零搭建Astro博客系统并部署到Netlify
-
 在现代Web开发中，静态网站生成器（SSG）因其出色的性能和SEO友好性而备受青睐。**Astro**作为新一代的静态网站生成器，以其独特的"孤岛架构"和零JavaScript运行时理念，为开发者提供了构建高性能网站的全新方式。
 
 本文将详细介绍如何从零开始搭建一个功能完整的Astro博客系统，并将其部署到Netlify平台。
