@@ -2,7 +2,6 @@
 title: "Netlify 自定义域名添加 SSL 证书开启 HTTPS 完整指南"
 published: 2026-02-23
 description: "详解如何在 Netlify 上为自定义域名配置自定义 SSL 证书，解决多平台部署时证书续期问题，包含 Intermediate certs 获取方法。"
-image: "./cover.webp"
 tags: ["Netlify", "SSL证书", "HTTPS", "静态博客", "部署"]
 category: "技术教程"
 draft: false
