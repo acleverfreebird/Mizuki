@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <style>
+    .symbol { stroke: #000000; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    
+    @media (prefers-color-scheme: dark) {
+      .symbol { stroke: #ffffff; }
+    }
+  </style>
+  
+  <!-- 左尖括号 < -->
+  <path class="symbol" d="M32 30 L12 50 L32 70"/>
+  
+  <!-- 斜杠 / -->
+  <path class="symbol" d="M42 72 L58 28"/>
+  
+  <!-- 右尖括号 > -->
+  <path class="symbol" d="M68 30 L88 50 L68 70"/>
+</svg>
