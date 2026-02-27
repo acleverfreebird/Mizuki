@@ -1,49 +1,38 @@
+# 欢迎来到 freebird2913 的小世界 🌏
 
-This website is built with the **Astro** framework using the [Mizuki](https://github.com/matsuzaka-yuki/mizuki) theme.
-
-::github{repo="matsuzaka-yuki/Mizuki"}
-
-## 🌟 Theme Features
-
-### 🎨 Design & User Experience
-- **Modern & Elegant Design** - Clean, minimalist interface with beautiful typography
-- **Fully Responsive** - Optimized for all devices from mobile to desktop
-- **Dark/Light Mode** - Automatic theme switching with smooth transitions
-- **Beautiful Typography** - Enhanced readability with JetBrains Mono font
-- **Smooth Animations** - Fluid page transitions and interactive elements
-
-### 🔍 Content & Search
-- **Advanced Search** - Powered by [Pagefind](https://pagefind.app/) for fast, accurate results
-- **Enhanced Markdown** - Extended syntax with code highlighting and math support
-- **Interactive Table of Contents** - Auto-scroll navigation for long articles
-- **RSS Feed Generation** - Stay updated with automatic feed generation
-- **Reading Time Estimation** - Know how long articles take to read
-- **Post Categorization** - Organize content with tags and categories
-
-
-
-### 📱 Special Pages
-- **Anime Tracking Page** - Track your anime watching progress with ratings
-- **Friends Links Page** - Showcase friend websites with beautiful cards
-- **Diary/Moments Page** - Share life moments like social media posts
-- **Archive Page** - Organized timeline view of all posts
-- **About Page** - Customizable personal introduction (this page!)
-
-### 🛠 Technical Features
-- **Enhanced Code Blocks** - Powered by [Expressive Code](https://expressive-code.com/)
-- **Math Support** - LaTeX rendering with KaTeX for mathematical expressions
-- **Image Optimization** - PhotoSwipe gallery with lazy loading
-- **SEO Optimized** - Built-in sitemap and meta tags for better search visibility
-- **Performance Optimized** - Fast loading with caching and optimization
-- **Comment System Ready** - Integration support for Twikoo comments
-
-### 🎯 Advanced Markdown Features
-- **Callouts & Admonitions** - Beautiful info boxes with `> [!NOTE]`, `> [!TIP]`, `> [!WARNING]`
-- **Mathematical Equations** - Write LaTeX math with `$inline$` and `$$block$$` syntax
-- **GitHub Cards** - Embed repository cards with `::github{repo="user/repo"}`
-- **Syntax Highlighting** - Advanced code highlighting with line numbers
-- **Copy Code Buttons** - Easy code copying functionality
+嗨！我是 **freebird2913**，一个普普通通的高中生，也是这个网站的运维者。很高兴在这里遇见你！
 
 ---
 
-*Built with ❤️ using Astro and inspired by modern web design principles.*
+## 🚀 关于本站
+
+本博客诞生于三年前，一路走来，尝试过 `WordPress`、`Halo` 等众多博客系统，最终在 `Astro` 这里安了家。为什么是 Astro？因为它足够轻快，也让这个小破站的 SEO 忽然好转了起来——感谢开源的力量！
+
+为了让大家访问得更顺畅，本站采用了 **Vercel + Netlify 双重部署**，未来还可能接入 EdgeOne 等 CDN 平台，让速度更进一步。
+
+---
+
+## 🌐 域名那些事
+
+虽然我手里有好几个域名（比如 `freebird.asia`），但最终都指向了主站：
+
+👉 **www.freebird2913.tech**
+
+为什么不启用其他域名呢？因为它们目前在搜索引擎中的权重还比较低……不过说不定哪天，它们也会成为通往这里的秘密通道呢。
+
+---
+
+## 📬 欢迎交流
+
+如果你对博客、技术或者任何话题感兴趣，欢迎留言或通过其他方式找到我。一个高中生的运维之路，还在继续探索中～
+
+感谢你来看我，希望这里的内容能给你带来一点点启发或乐趣！
+
+
+---
+本网站基于 **Astro** 框架，使用 [Mizuki](https://github.com/matsuzaka-yuki/mizuki) 主题。
+
+::github{repo="matsuzaka-yuki/Mizuki"}
+
+*构建 ❤️ 使用 Astro 框架和现代网页设计原则启发。*
+
