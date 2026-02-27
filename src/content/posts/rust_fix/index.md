@@ -1,6 +1,6 @@
 ---
 title: "Rust 1.93.1 发布：三个 Bug 修了，建议赶紧升级"
-published: 2026-02-21
+published: 2026-02-27
 description: "Rust 1.93.1 发布：修复三个关键问题，提升开发体验"
 tags: ["Rust", "编译器"]
 category: "技术教程"
