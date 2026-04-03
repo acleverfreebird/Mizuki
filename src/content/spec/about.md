@@ -30,9 +30,9 @@
 
 
 ---
-本网站基于 **Astro** 框架，使用 [Mizuki](https://github.com/matsuzaka-yuki/mizuki) 主题。
+本网站基于 **Astro** 框架，使用 [Mizuki](https://github.com/LyraVoid/Mizuki) 主题。
 
-::github{repo="matsuzaka-yuki/Mizuki"}
+::github{repo="LyraVoid/Mizuki"}
 
 *构建 ❤️ 使用 Astro 框架和现代网页设计原则启发。*
 
