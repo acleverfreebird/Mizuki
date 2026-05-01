@@ -40,8 +40,11 @@ export default defineConfig({
 	output: "static",
 
 	integrations: [
-		umami({
-			shareUrl: "https://views.freebird2913.tech/share/UnChWZkxBJnsZ6oS",
+		oddmisc({
+			umami: {
+				shareUrl:
+					"https://views.freebird2913.tech/share/UnChWZkxBJnsZ6oS",
+			},
 		}),
 		swup({
 			theme: false,
