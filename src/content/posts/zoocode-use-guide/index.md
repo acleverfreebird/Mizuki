@@ -3,7 +3,6 @@ title: "ZooCode 使用指南：安装、配置与快速上手"
 published: 2026-06-02
 updated: 2026-06-06
 description: "ZooCode 使用指南：从 VS Code 扩展安装、侧边栏布局调整，到 OpenAI Compatible 提供商、BIRD API 地址与 API Key 配置，再到模型选择和测试对话，帮助你快速完成 AI 编程助手的基础配置。"
-image: "01-install.png"
 tags: ["ZooCode", "VSCode", "AI编程", "BIRD API", "OpenAI Compatible"]
 category: "技术教程"
 draft: false
