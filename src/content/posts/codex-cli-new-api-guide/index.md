@@ -12,6 +12,12 @@ author: "FreeBird"
 sourceLink: "https://www.newapi.ai/zh/docs/apps/codex-cli"
 ---
 
+> 如果你需要一个稳定的 AI API 提供平台，可以尝试由我运行并维护的 **BIRD API**。
+>
+> 👉 [AI LLM](https://llmai.freebird2913.tech)
+>
+> 如果它对你有帮助，也欢迎支持一下。
+
 # Codex CLI 安装与 New API 接入指南：在终端里使用 AI 编程助手
 
 > 本文根据 [New API 官方 Codex CLI 教程](https://www.newapi.ai/zh/docs/apps/codex-cli)整理与扩展，面向想在本地终端中使用 AI 编程助手的用户。
