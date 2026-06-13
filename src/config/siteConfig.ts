@@ -107,8 +107,12 @@ export const siteConfig: SiteConfig = {
   banner: {
     // 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播
     src: {
-      desktop: ["/assets/desktop-banner/image.png"], // 桌面横幅图片
-      mobile: ["/assets/desktop-banner/image.png"], // 移动横幅图片
+      desktop: [
+        "https://backup.fukit.cn/autoupload/f/RynoeZ9FxlmxuYVTtmTX8SfNcKcqEnRmcljopnyJoMs/20260613/gmQQ/2878X1765/image.png/webp",
+      ], // 桌面横幅图片
+      mobile: [
+        "https://backup.fukit.cn/autoupload/f/RynoeZ9FxlmxuYVTtmTX8SfNcKcqEnRmcljopnyJoMs/20260613/gmQQ/2878X1765/image.png/webp",
+      ], // 移动横幅图片
     }, // 使用本地横幅图片
 
     position: "center", // 等同于 object-position，仅支持 'top', 'center', 'bottom'。默认为 'center'

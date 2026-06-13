@@ -3,8 +3,12 @@ import type { FullscreenWallpaperConfig } from "../types/config";
 export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
   enable: true,
   src: {
-    desktop: ["/assets/desktop-banner/image.png"],
-    mobile: ["/assets/desktop-banner/image.png"],
+    desktop: [
+      "https://backup.fukit.cn/autoupload/f/RynoeZ9FxlmxuYVTtmTX8SfNcKcqEnRmcljopnyJoMs/20260613/gmQQ/2878X1765/image.png/webp",
+    ],
+    mobile: [
+      "https://backup.fukit.cn/autoupload/f/RynoeZ9FxlmxuYVTtmTX8SfNcKcqEnRmcljopnyJoMs/20260613/gmQQ/2878X1765/image.png/webp",
+    ],
   },
   position: "center",
   carousel: {
