@@ -51,8 +51,8 @@ const homeContent = getPostHomeContent(
 		class:list={[
 			"pl-6 md:pl-9 pr-6 md:pr-2 pt-6 md:pt-7 pb-6 relative",
 			{
-				"w-full md:w-[calc(100%_-_3.25rem_-_0.75rem)]": !hasCover,
-				"w-full md:w-[calc(100%_-_var(--coverWidth)_-_0.75rem)]":
+				"w-full md:w-[calc(100%-3.25rem-0.75rem)]": !hasCover,
+				"w-full md:w-[calc(100%-var(--coverWidth)-0.75rem)]":
 					hasCover,
 			},
 		]}
@@ -175,7 +175,7 @@ const homeContent = getPostHomeContent(
 			<a
 				href={url}
 				aria-label={title}
-				class="!hidden md:flex! btn-regular w-13
+				class="hidden! md:flex! btn-regular w-13
          absolute right-3 top-3 bottom-3 rounded-xl bg-(--enter-btn-bg)
          hover:bg-(--enter-btn-bg-hover) active:bg-(--enter-btn-bg-active) active:scale-95
         "
@@ -187,6 +187,10 @@ const homeContent = getPostHomeContent(
 			</a>
 		)
 	}
+</div>
+<div
+	class="transition border-t border-dashed mx-6 border-black/10 dark:border-white/15 last:border-t-0 md:hidden"
+>
 </div>
 
 <style define:vars={{ coverWidth }}></style>
