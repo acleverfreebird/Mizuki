@@ -18,11 +18,11 @@ lang: 'zh-CN'
 
 从 ArchLinux 安装介质启动后，会看到如下界面，选择第一个选项并回车：
 
-![ArchLinux 启动界面](https://arch.icekylin.online/assets/pre-virt_vb-14.pyALUo_J.png)
+![ArchLinux 启动界面](./images/pre-virt_vb-14.pyALUo_J.png)
 
 进入安装环境后，将看到命令行界面，准备开始执行安装命令：
 
-![安装环境命令行](https://arch.icekylin.online/assets/pre-virt_vb-15.CqUq5u2n.png)
+![安装环境命令行](./images/pre-virt_vb-15.CqUq5u2n.png)
 
 ## 2. 禁用 reflector 服务
 
@@ -32,8 +32,6 @@ lang: 'zh-CN'
 systemctl stop reflector.service  # 停止服务
 systemctl status reflector.service  # 确认服务已停止（按q退出）
 ```
-
-![禁用 reflector 服务](https://arch.icekylin.online/assets/basic-install_reflector.C82zlza7.png)
 
 > ℹ️ **提示**：可以使用 `clear` 命令清屏，`Tab` 键自动补全命令，`rmmod pcspkr` 禁用蜂鸣器。
 
@@ -45,7 +43,7 @@ systemctl status reflector.service  # 确认服务已停止（按q退出）
 ls /sys/firmware/efi/efivars
 ```
 
-![确认 UEFI 模式](https://arch.icekylin.online/assets/basic-install_check-efi.Cst0GaUE.png)
+![确认 UEFI 模式](./images/basic-install_check-efi.Cst0GaUE.png)
 
 如果输出一堆文件列表，表示已在 UEFI 模式；否则需要进入 BIOS 设置启用 UEFI。
 
@@ -76,7 +74,7 @@ exit  # 退出
 ping www.bilibili.com  # 测试网络连接
 ```
 
-![测试网络连通性](https://arch.icekylin.online/assets/basic-install_ping.BDHpp9ke.png)
+![测试网络连通性](./images/basic-install_ping.BDHpp9ke.png)
 
 看到数据返回表示网络已连接，按 `Ctrl+C` 停止测试。
 
@@ -87,7 +85,7 @@ timedatectl set-ntp true  # 启用网络时间同步
 timedatectl status  # 检查服务状态
 ```
 
-![更新系统时钟](https://arch.icekylin.online/assets/basic-install_time.Dmuxtefc.png)
+![更新系统时钟](./images/basic-install_time.Dmuxtefc.png)
 
 ## 6. 更换国内软件仓库镜像源
 
@@ -106,7 +104,7 @@ Server = https://repo.huaweicloud.com/archlinux/$repo/os/$arch  # 华为
 Server = http://mirror.lzu.edu.cn/archlinux/$repo/os/$arch  # 兰州大学
 ```
 
-![修改镜像源](https://arch.icekylin.online/assets/basic-install_mirrorlist-1.DS2ha-4u.png)
+![修改镜像源](./images/basic-install_mirrorlist-1.DS2ha-4u.png)
 
 > ⚠️ **警告**：不要在此步骤添加 `archlinuxcn` 源！
 
@@ -118,7 +116,7 @@ Server = http://mirror.lzu.edu.cn/archlinux/$repo/os/$arch  # 兰州大学
 lsblk  # 显示当前分区情况
 ```
 
-![查看磁盘分区](https://arch.icekylin.online/assets/basic-install_partition-1.Bh1Xqg5R.png)
+![查看磁盘分区](./images/basic-install_partition-1.Bh1Xqg5R.png)
 
 识别要安装 ArchLinux 的磁盘（如 `/dev/sda` 或 `/dev/nvme0n1`）。
 
@@ -130,14 +128,14 @@ lsblk  # 显示当前分区情况
 cfdisk /dev/sda  # 进入分区工具
 ```
 
-![cfdisk 分区工具](https://arch.icekylin.online/assets/basic-install_partition-2.DLT4hhE7.png)
+![cfdisk 分区工具](./images/basic-install_partition-2.DLT4hhE7.png)
 
 #### 创建 Swap 分区
 1. 选中 `Free space` → 选择 `[New]` → 输入大小（建议为内存的60%）
 2. 选择 `[Type]` → 选择 `Linux swap`
 
-![创建 Swap 分区](https://arch.icekylin.online/assets/basic-install_partition-3.BjLUGd3s.png)
-![设置 Swap 大小](https://arch.icekylin.online/assets/basic-install_partition-4.Dqv4NCG5.png)
+![创建 Swap 分区](./images/basic-install_partition-3.BjLUGd3s.png)
+![设置 Swap 大小](./images/basic-install_partition-4.Dqv4NCG5.png)
 
 #### 创建 Btrfs 分区
 1. 选中剩余 `Free space` → 选择 `[New]` → 使用默认大小（剩余全部空间）
@@ -146,7 +144,7 @@ cfdisk /dev/sda  # 进入分区工具
 #### 写入分区表
 选择 `[Write]` → 输入 `yes` 确认 → 选择 `[Quit]` 退出。
 
-![写入分区表](https://arch.icekylin.online/assets/basic-install_partition-10.B4WDaAwE.png)
+![写入分区表](./images/basic-install_partition-10.B4WDaAwE.png)
 
 ### 7.3 格式化分区
 
@@ -160,7 +158,7 @@ cfdisk /dev/sda  # 进入分区工具
 mkswap /dev/sda2  # 格式化Swap分区
 ```
 
-![格式化 Swap](https://arch.icekylin.online/assets/basic-install_mkswap.CzM8dA_8.png)
+![格式化 Swap](./images/basic-install_mkswap.CzM8dA_8.png)
 
 #### 格式化 Btrfs 分区
 
@@ -168,7 +166,7 @@ mkswap /dev/sda2  # 格式化Swap分区
 mkfs.btrfs -L myArch /dev/sda3  # 格式化Btrfs分区并命名为myArch
 ```
 
-![格式化 Btrfs](https://arch.icekylin.online/assets/basic-install_mkbtrfs-1.CpWxbwoC.png)
+![格式化 Btrfs](./images/basic-install_mkbtrfs-1.CpWxbwoC.png)
 
 ### 7.4 创建 Btrfs 子卷
 
@@ -179,7 +177,7 @@ btrfs subvolume create /mnt/@home  # 创建用户主目录子卷
 umount /mnt  # 卸载分区
 ```
 
-![创建 Btrfs 子卷](https://arch.icekylin.online/assets/basic-install_mkbtrfs-3.DnVJ6tP6.png)
+![创建 Btrfs 子卷](./images/basic-install_mkbtrfs-3.DnVJ6tP6.png)
 
 ## 8. 挂载分区
 
@@ -201,7 +199,7 @@ mount /dev/sda1 /mnt/boot  # 假设sda1是EFI分区
 swapon /dev/sda2
 ```
 
-![挂载分区](https://arch.icekylin.online/assets/basic-install_mount-1.DSGPGhwn.png)
+![挂载分区](./images/basic-install_mount-1.DSGPGhwn.png)
 
 ## 9. 安装系统基础包
 
@@ -215,7 +213,7 @@ pacstrap /mnt base base-devel linux linux-firmware btrfs-progs
 pacstrap /mnt networkmanager vim sudo zsh zsh-completions
 ```
 
-![安装基础包](https://arch.icekylin.online/assets/basic-install_pacstrap-1.Q3dLs9X-.png)
+![安装基础包](./images/basic-install_pacstrap-1.Q3dLs9X-.png)
 
 ## 10. 生成 fstab 文件
 
@@ -224,7 +222,7 @@ genfstab -U /mnt > /mnt/etc/fstab  # 生成fstab文件
 cat /mnt/etc/fstab  # 检查fstab文件
 ```
 
-![生成 fstab](https://arch.icekylin.online/assets/basic-install_fstab.CtqAJn7q.png)
+![生成 fstab](./images/basic-install_fstab.CtqAJn7q.png)
 
 ## 11. 切换到新系统
 
@@ -232,7 +230,7 @@ cat /mnt/etc/fstab  # 检查fstab文件
 arch-chroot /mnt  # 切换到新安装的系统
 ```
 
-![chroot 到新系统](https://arch.icekylin.online/assets/basic-install_chroot.d0svrCrQ.png)
+![chroot 到新系统](./images/basic-install_chroot.d0svrCrQ.png)
 
 ## 12. 配置系统
 
@@ -242,7 +240,7 @@ arch-chroot /mnt  # 切换到新安装的系统
 vim /etc/hostname  # 编辑主机名文件，输入主机名（如myarch）
 ```
 
-![设置主机名](https://arch.icekylin.online/assets/basic-install_set-name-and-timezone-1.B918CSnw.png)
+![设置主机名](./images/basic-install_set-name-and-timezone-1.B918CSnw.png)
 
 编辑 `/etc/hosts`：
 
@@ -258,7 +256,7 @@ vim /etc/hosts
 127.0.1.1   myarch.localdomain myarch
 ```
 
-![配置 hosts](https://arch.icekylin.online/assets/basic-install_set-name-and-timezone-2.CLbXR1mh.png)
+![配置 hosts](./images/basic-install_set-name-and-timezone-2.CLbXR1mh.png)
 
 ### 12.2 设置时区
 
@@ -267,7 +265,7 @@ ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime  # 设置上海时区
 hwclock --systohc  # 同步系统时间到硬件时钟
 ```
 
-![设置时区](https://arch.icekylin.online/assets/basic-install_set-name-and-timezone-3.BFRWq2B4.png)
+![设置时区](./images/basic-install_set-name-and-timezone-3.BFRWq2B4.png)
 
 ### 12.3 设置 Locale
 
@@ -280,7 +278,7 @@ locale-gen  # 生成locale
 echo 'LANG=en_US.UTF-8' > /etc/locale.conf  # 设置默认locale
 ```
 
-![设置 Locale](https://arch.icekylin.online/assets/basic-install_locale-1.BesWF7lc.png)
+![设置 Locale](./images/basic-install_locale-1.BesWF7lc.png)
 
 ### 12.4 设置 root 密码
 
@@ -288,7 +286,7 @@ echo 'LANG=en_US.UTF-8' > /etc/locale.conf  # 设置默认locale
 passwd root  # 设置root用户密码
 ```
 
-![设置 root 密码](https://arch.icekylin.online/assets/basic-install_passwd.C4vgFnXJ.png)
+![设置 root 密码](./images/basic-install_passwd.C4vgFnXJ.png)
 
 ## 13. 安装微码
 
@@ -311,7 +309,7 @@ pacman -S grub efibootmgr os-prober  # 安装必要包
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ARCH  # 安装GRUB
 ```
 
-![安装 GRUB](https://arch.icekylin.online/assets/basic-install_grub-1.BRcfVSlw.png)
+![安装 GRUB](./images/basic-install_grub-1.BRcfVSlw.png)
 
 编辑 `/etc/default/grub`，修改以下内容：
 - 去掉 `GRUB_CMDLINE_LINUX_DEFAULT` 中的 `quiet`
@@ -323,7 +321,7 @@ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ARCH  # �
 grub-mkconfig -o /boot/grub/grub.cfg  # 生成GRUB配置文件
 ```
 
-![生成 GRUB 配置](https://arch.icekylin.online/assets/basic-install_grub-3.1YkNI2Qy.png)
+![生成 GRUB 配置](./images/basic-install_grub-3.1YkNI2Qy.png)
 
 ## 15. 完成安装
 
@@ -333,7 +331,7 @@ umount -R /mnt  # 卸载分区
 reboot  # 重启系统
 ```
 
-![完成安装](https://arch.icekylin.online/assets/basic-install_finish.BFJMMeTg.png)
+![完成安装](./images/basic-install_finish.BFJMMeTg.png)
 
 重启前请拔掉安装介质，系统将从硬盘启动。
 
@@ -346,7 +344,7 @@ systemctl enable --now NetworkManager  # 启动并设置NetworkManager开机自�
 ping www.bilibili.com  # 测试网络连接
 ```
 
-![首次登录](https://arch.icekylin.online/assets/basic-install_last-step-2.OQfzBdal.png)
+![首次登录](./images/basic-install_last-step-2.OQfzBdal.png)
 
 ## 结语
 
