@@ -3,7 +3,7 @@ title: "如何在 WSL2 中安装和使用 Kali Linux"
 author: "freebird2913"
 published: 2026-06-06T10:22:00.000Z
 description: "WSL2 Kali Linux 完整入门教程：从 Windows 11 启用 WSL2、安装 Kali Linux、完成初始化配置，到更新系统、安装常用渗透测试工具、配置 systemd、使用 Win-KeX 图形桌面、管理文件路径与排查常见问题，帮助你在 Windows 上高效搭建 Kali Linux 学习环境。"
-image: ""
+image: "4ad6becfee1b.jpg"
 tags: ["WSL2", "Kali Linux", "Linux", "Windows", "网络安全"]
 category: "Linux"
 draft: false
@@ -12,6 +12,8 @@ lang: "zh-CN"
 
 ## 前言
 
+![Kali Linux on WSL2](4ad6becfee1b.jpg)
+
 Kali Linux 是面向安全研究、渗透测试、数字取证与安全学习的 Linux 发行版。通过 WSL2（Windows Subsystem for Linux 2），我们可以在 Windows 11 上直接运行 Kali Linux，而不必单独安装虚拟机或双系统。
 
 相比传统虚拟机，WSL2 的优势是启动快、资源占用低、与 Windows 文件系统集成方便；不足是它并不等同于完整虚拟机，部分需要真实内核模块、USB 直通、无线网卡监听模式或复杂网络拓扑的场景仍然更适合虚拟机或实体机。
@@ -19,6 +21,8 @@ Kali Linux 是面向安全研究、渗透测试、数字取证与安全学习的
 > 重要提醒：Kali Linux 中的安全工具只能用于授权环境、靶场、实验室或自己拥有的系统。不要对未授权目标进行扫描、攻击或测试。
 
 ## 1. 准备条件
+
+![WSL2 架构图](4ca14c7bb2fe.png)
 
 开始之前，请确认你的环境满足以下要求：
 
@@ -37,6 +41,8 @@ wsl --status
 如果命令不存在或提示未安装，就继续执行下一节。
 
 ## 2. 安装 WSL2
+
+![安装 WSL2](d6f84d3d72c8.webp)
 
 以管理员身份打开 PowerShell，然后执行：
 
@@ -102,9 +108,13 @@ wsl -d kali-linux
 
 ### 3.2 使用 Microsoft Store 安装
 
-也可以打开 Microsoft Store，搜索 “Kali Linux”，点击安装。安装完成后从开始菜单启动 Kali Linux，并完成首次用户初始化。
+![Microsoft Store 搜索 Kali Linux](fc92c4ff9c3e.jpg)
+
+也可以打开 Microsoft Store，搜索 "Kali Linux"，点击安装。安装完成后从开始菜单启动 Kali Linux，并完成首次用户初始化。
 
 ### 3.3 检查发行版状态
+
+![wsl --list --verbose](a8c99ada0735.png)
 
 回到 PowerShell 执行：
 
@@ -126,6 +136,8 @@ wsl --set-version kali-linux 2
 ```
 
 ## 4. 初始化 Kali Linux
+
+![Kali Linux 终端](d8b4e3233c8a.jpg)
 
 进入 Kali 后，建议先更新软件源和系统包：
 
@@ -156,6 +168,8 @@ sudo apt install -y curl wget git vim nano unzip zip ca-certificates gnupg lsb-r
 
 ## 5. 配置 systemd
 
+![编辑 wsl.conf](40138ac716d5.png)
+
 较新的 WSL 已经支持 systemd。启用后可以更接近常规 Linux 使用体验，例如使用 systemctl 管理服务。
 
 编辑 WSL 配置文件：
@@ -185,6 +199,8 @@ wsl -d kali-linux
 
 验证 systemd 是否启用：
 
+![systemctl status](04eb623e8464.jpg)
+
 ```bash
 systemctl status
 ```
@@ -192,6 +208,8 @@ systemctl status
 如果能看到 systemd 状态信息，说明启用成功。
 
 ## 6. 安装 Kali 常用工具
+
+![Metasploit 控制台](88455a8afe49.png)
 
 Kali 提供了多个工具包元包（metapackage）。WSL 环境不建议一开始安装所有工具，因为体积较大，而且部分工具依赖图形界面、网卡或内核能力。
 
@@ -211,6 +229,8 @@ sudo apt install -y nmap netcat-traditional dnsutils whois gobuster sqlmap nikto
 
 常用工具示例：
 
+![nmap 扫描](6c75ca9bf7d2.jpg)
+
 ```bash
 nmap -sV scanme.nmap.org
 whois example.com
@@ -225,6 +245,8 @@ WSL2 可以访问 Windows 文件，也可以从 Windows 访问 WSL 文件。
 
 ### 7.1 在 Kali 中访问 Windows 文件
 
+![WSL 访问 Windows 文件](2785265656ff.png)
+
 Windows 的磁盘会挂载在 /mnt 目录下。例如 C 盘路径为：
 
 ```bash
@@ -238,6 +260,8 @@ cd /mnt/c/Users/Alice/Desktop
 ```
 
 ### 7.2 在 Windows 中访问 Kali 文件
+
+![资源管理器访问 WSL](59724e303c57.jpg)
 
 在资源管理器地址栏输入：
 
@@ -263,6 +287,8 @@ cd ~/projects
 不要把大量 Linux 项目放在 `/mnt/c` 下长期编译，否则文件 I/O 可能明显变慢。
 
 ## 8. 使用图形界面
+
+![Win-KeX 图形桌面](a9db724a7fc6.png)
 
 Windows 11 的 WSLg 可以直接运行部分 Linux 图形应用。比如安装并运行鼠标垫编辑器：
 
@@ -307,6 +333,8 @@ wsl --shutdown
 
 ## 9. 网络与端口访问
 
+![WSL2 网络互通](9ea426b038fe.jpg)
+
 WSL2 中启动的服务通常可以从 Windows 本机访问。例如在 Kali 中启动一个简单 HTTP 服务：
 
 ```bash
@@ -335,6 +363,8 @@ hostname -I
 
 ## 10. 配置 Windows Terminal
 
+![Windows Terminal 配置](9f9a1eb13031.jpg)
+
 如果你使用 Windows Terminal，可以在下拉菜单中直接选择 Kali Linux。
 
 也可以从 PowerShell 启动：
@@ -358,6 +388,8 @@ wsl
 就会进入 Kali Linux。
 
 ## 11. 备份、导出与迁移
+
+![wsl --help 导出导入](9437d6cdb76c.png)
 
 WSL 发行版可以导出为 tar 文件，方便备份或迁移。
 
