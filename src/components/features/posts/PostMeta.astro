@@ -23,6 +23,7 @@ interface Props {
 	isHome?: boolean;
 	className?: string;
 	id?: string;
+	pagePath?: string;
 	showOnlyBasicMeta?: boolean;
 	words?: number;
 	minutes?: number;
@@ -41,6 +42,7 @@ const {
 	isHome,
 	className = "",
 	id,
+	pagePath,
 	showOnlyBasicMeta = false,
 	words,
 	minutes,
@@ -93,8 +95,12 @@ const {
         </div>
     )}
     
-    {!isHome && id && (
-        <div class="flex items-center umami-page-views hidden" data-id={id}>
+    {!isHome && (id || pagePath) && (
+        <div
+            class="flex items-center umami-page-views hidden"
+            data-id={id}
+            data-path={pagePath}
+        >
             <div class="meta-icon">
                 <Icon name="material-symbols:visibility-outline-rounded" class="text-xl"></Icon>
             </div>
@@ -115,16 +121,29 @@ const {
         return `${pageViewsText} ${pageViews} · ${visitsText} ${visits}`;
     }
 
+    function normalizeStatsPath(path) {
+        if (!path) return null;
+
+        const pathname = path.startsWith("http")
+            ? new URL(path).pathname
+            : path;
+
+        return `/${pathname.replace(/^\/+|\/+$/g, "")}/`;
+    }
+
     async function fetchPageViews() {
         const containers = document.querySelectorAll('.umami-page-views');
         if (!containers.length || !window.oddmisc) return;
 
         containers.forEach(async (container) => {
             const id = container.dataset.id;
-            if (!id) return;
+            const path =
+                normalizeStatsPath(container.dataset.path) ||
+                (id ? normalizeStatsPath(`/posts/${id}/`) : null);
+            if (!path) return;
 
             try {
-                const stats = await window.oddmisc.getPageStats(`/posts/${id}/`);
+                const stats = await window.oddmisc.getPageStats(path);
                 const pageViews = stats.pageviews || 0;
                 const visits = stats.visits || 0;
 

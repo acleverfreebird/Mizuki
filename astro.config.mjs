@@ -298,7 +298,7 @@ export default defineConfig({
   integrations: [
     oddmisc({
       umami: {
-        shareUrl: false,
+        shareUrl: "https://views.freebird2913.tech/share/UnChWZkxBJnsZ6oS",
       },
     }),
     swup({

@@ -281,6 +281,7 @@ const jsonLd = {
 					tags={entry.data.tags}
 					category={entry.data.category || undefined}
 					id={entry.id}
+					pagePath={Astro.url.pathname}
 					showEncrypted={isEncrypted}
 				/>
 				{
