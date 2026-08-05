@@ -6,7 +6,7 @@ export interface Skill {
   name: string;
   description: string;
   icon: string; // Iconify icon name
-  category: "frontend" | "backend" | "tools";
+  category: "frontend" | "backend" | "tools" | "other";
   level: "beginner" | "intermediate" | "advanced" | "expert";
   experience: {
     years: number;
