@@ -4,10 +4,10 @@ export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
   enable: true,
   src: {
     desktop: [
-      "https://backup.fukit.cn/autoupload/f/RynoeZ9FxlmxuYVTtmTX8SfNcKcqEnRmcljopnyJoMs/20260613/gmQQ/2878X1765/image.png/webp",
+      "/assets/desktop-banner/desktop-banner.jpg",
     ],
     mobile: [
-      "https://backup.fukit.cn/autoupload/f/RynoeZ9FxlmxuYVTtmTX8SfNcKcqEnRmcljopnyJoMs/20260613/gmQQ/2878X1765/image.png/webp",
+      "/assets/mobile-banner/mobile-banner.jpg",
     ],
   },
   position: "center",

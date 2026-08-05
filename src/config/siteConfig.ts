@@ -12,7 +12,7 @@ export const siteConfig: SiteConfig = {
   lang: SITE_LANG,
 
   themeColor: {
-    hue: 240, // 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
+    hue: 220, // 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝色：220，粉色：345
     fixed: false, // 对访问者隐藏主题色选择器
   },
 
@@ -109,10 +109,10 @@ export const siteConfig: SiteConfig = {
     // 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播
     src: {
       desktop: [
-        "https://backup.fukit.cn/autoupload/f/RynoeZ9FxlmxuYVTtmTX8SfNcKcqEnRmcljopnyJoMs/20260613/gmQQ/2878X1765/image.png/webp",
+        "/assets/desktop-banner/desktop-banner.jpg",
       ], // 桌面横幅图片
       mobile: [
-        "https://backup.fukit.cn/autoupload/f/RynoeZ9FxlmxuYVTtmTX8SfNcKcqEnRmcljopnyJoMs/20260613/gmQQ/2878X1765/image.png/webp",
+        "/assets/mobile-banner/mobile-banner.jpg",
       ], // 移动横幅图片
     }, // 使用本地横幅图片
 
