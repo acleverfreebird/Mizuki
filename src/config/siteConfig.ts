@@ -12,7 +12,7 @@ export const siteConfig: SiteConfig = {
   lang: SITE_LANG,
 
   themeColor: {
-    hue: 220, // 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝色：220，粉色：345
+    hue: 50, // 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝色：220，粉色：345
     fixed: false, // 对访问者隐藏主题色选择器
   },
 
@@ -108,7 +108,7 @@ export const siteConfig: SiteConfig = {
   banner: {
     // 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播
     src: {
-      desktop: ["https://free.picui.cn/free/2026/08/05/6a733dc363136.webp"], // 桌面横幅图片
+      desktop: ["https://free.picui.cn/free/2026/08/10/6a796e9869798.webp"], // 桌面横幅图片
       mobile: ["https://free.picui.cn/free/2026/08/05/6a733dc366fc5.webp"], // 移动横幅图片
     }, // 使用本地横幅图片
 
