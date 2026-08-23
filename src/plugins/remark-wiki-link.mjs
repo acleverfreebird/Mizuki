@@ -1,8 +1,15 @@
+// Portions adapted from https://github.com/CuteLeaf/Firefly
+// Copyright (c) 2024 saicaca
+// Copyright (c) 2025 CuteLeaf
+// Licensed under the MIT License. See THIRD_PARTY_NOTICES.md.
+
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { slug } from "github-slugger";
 import matter from "gray-matter";
+import { matchesNoReferrerDomain } from "../utils/image-referrer.ts";
+import { resolvePostCoverSource } from "../utils/post-cover-source.ts";
 
 const POSTS_DIR = fileURLToPath(new URL("../content/posts/", import.meta.url));
 const MARKDOWN_EXTENSION = /\.(?:md|mdx|markdown)$/i;
@@ -187,6 +194,46 @@ function element(tagName, properties, children) {
 	};
 }
 
+function wikiCoverUrl(cover, currentFilePath) {
+	if (cover.kind !== "local" || !cover.absolutePath || !currentFilePath) {
+		return cover.src;
+	}
+
+	const relative = path
+		.relative(path.dirname(currentFilePath), cover.absolutePath)
+		.replaceAll("\\", "/");
+	return relative.startsWith(".") ? relative : `./${relative}`;
+}
+
+async function createWikiCover(meta, title, options, currentFilePath) {
+	const cover = await resolvePostCoverSource(meta.data, {
+		contentFilePath: meta.filePath,
+		identity: postId(meta),
+		imageApi: options.imageApi,
+		apiImages: options.apiImages,
+	});
+	const url = wikiCoverUrl(cover, currentFilePath);
+	if (!url) return null;
+
+	const properties = {
+		className: ["wlc-cover-image"],
+		loading: "lazy",
+		decoding: "async",
+		widths: [160, 320, 480],
+		sizes: "(max-width: 640px) calc(100vw - 3rem), 128px",
+	};
+	if (matchesNoReferrerDomain(url, options.noReferrerDomains ?? [])) {
+		properties.referrerPolicy = "no-referrer";
+	}
+
+	return {
+		type: "image",
+		url,
+		alt: `Cover image for ${title}`,
+		data: { hProperties: properties },
+	};
+}
+
 function displayTitle(parsed, meta) {
 	if (parsed.alias) return parsed.alias;
 	if (typeof meta?.data.title === "string" && meta.data.title.trim()) {
@@ -217,13 +264,12 @@ function formatDate(value) {
 	return match?.[0] ?? "";
 }
 
-function createCard(parsed, metas, options) {
+async function createCard(parsed, metas, options, currentFilePath) {
 	const meta = resolveMeta(metas, parsed.contentPath);
 	if (!meta) return null;
 	const encrypted = meta.data.encrypted === true || Boolean(meta.data.password);
-	const info = [
-		element("div", { class: "wlc-title" }, [text(displayTitle(parsed, meta))]),
-	];
+	const title = displayTitle(parsed, meta);
+	const info = [element("div", { class: "wlc-title" }, [text(title)])];
 	if (!encrypted && typeof meta.data.description === "string") {
 		const description = meta.data.description.trim();
 		if (description) {
@@ -262,13 +308,26 @@ function createCard(parsed, metas, options) {
 		info.push(element("div", { class: "wlc-meta" }, metaItems));
 	}
 
+	const cover = encrypted
+		? null
+		: await createWikiCover(meta, title, options, currentFilePath);
+
 	return element(
 		"a",
 		{
 			class: "card-wiki-link no-styling",
 			href: postUrl(meta, parsed.contentPath, options, metas),
 		},
-		[element("div", { class: "wlc-info" }, info)],
+		[
+			...(cover
+				? [
+						element("span", { class: "wlc-cover", dataNoEnhance: true }, [
+							cover,
+						]),
+					]
+				: []),
+			element("div", { class: "wlc-info" }, info),
+		],
 	);
 }
 
@@ -291,7 +350,7 @@ function replaceInline(value, metas, options) {
 	return children;
 }
 
-function transform(node, metas, options) {
+async function transform(node, metas, options, currentFilePath) {
 	if (SKIPPED_NODE_TYPES.has(node.type) || !Array.isArray(node.children))
 		return;
 	for (let index = 0; index < node.children.length; index++) {
@@ -305,7 +364,12 @@ function transform(node, metas, options) {
 			if (match) {
 				const parsed = parseValue(match[1]);
 				if (parsed?.contentPath && !parsed.heading) {
-					const card = createCard(parsed, metas, options);
+					const card = await createCard(
+						parsed,
+						metas,
+						options,
+						currentFilePath,
+					);
 					if (card) {
 						node.children[index] = card;
 						continue;
@@ -320,14 +384,15 @@ function transform(node, metas, options) {
 				index += replacements.length - 1;
 			}
 		} else {
-			transform(child, metas, options);
+			await transform(child, metas, options, currentFilePath);
 		}
 	}
 }
 
 export function remarkWikiLink(options = {}) {
-	return (tree) => {
+	return async (tree, file) => {
 		if (options.enable === false) return;
-		transform(tree, collectPostMetas(), options);
+		const currentFilePath = file?.path || file?.history?.at(-1);
+		await transform(tree, collectPostMetas(), options, currentFilePath);
 	};
 }

@@ -8,6 +8,7 @@ export const siteConfig: SiteConfig = {
   subtitle: "一个普普通通的高中生开发者",
   siteURL: "https://www.freebird2913.tech/", // 请替换为你的站点URL，以斜杠结尾
   siteStartDate: "2023-01-30", // 站点开始运行日期，用于站点统计组件计算运行天数
+  timeZone: "Asia/Shanghai", // 文章日期使用的 IANA 时区，可改为 Asia/Tokyo、Europe/Berlin 等
 
   lang: SITE_LANG,
 
@@ -41,10 +42,15 @@ export const siteConfig: SiteConfig = {
     logo: "assets/home/logo.svg",
   },
 
-  // 页面自动缩放配置
+  // 旧版页面自动缩放配置。默认关闭，页面尺寸优先交由响应式布局处理。
   pageScaling: {
-    enable: true, // 是否开启自动缩放
+    enable: false, // 兼容旧站点的可选缩放；不建议通过根字号控制整体布局
     targetWidth: 2000, // 目标宽度，低于此宽度时开始缩放
+  },
+
+  font: {
+    // custom 保持 ZenMaruGothic -> Loli -> 系统字体的显示顺序；system 不加载任何自定义字体
+    mode: "custom",
   },
 
   bangumi: {
@@ -85,6 +91,14 @@ export const siteConfig: SiteConfig = {
     categoryBar: {
       enable: true, // 是否在文章列表页显示分类导航条
     },
+  },
+
+  // 文章页超宽屏布局配置
+  // 在 2K/4K 视口下扩展文章容器、侧栏与正文阅读轨道；1920px 以下不生效。
+  // 与 pageScaling 互不影响：断点按 CSS 视口判断，且 pageScaling 在 2000px 以上是空操作。
+  ultrawidePostLayout: {
+    enable: true, // 访客未手动切换时的初始状态
+    allowSwitch: true, // 是否在设置面板中显示开关
   },
 
   // 标签样式配置
@@ -187,7 +201,6 @@ export const siteConfig: SiteConfig = {
     // }
   ],
 
-  // 字体现在通过 astro.config.mjs 的 fonts 选项配置（Astro Font API）
   showLastModified: true, // 控制"上次编辑"卡片显示的开关
   pageProgressBar: {
     enable: true, // 启用页面顶部进度条
