@@ -165,7 +165,9 @@ const {
         });
     }
 
-    window.addEventListener('oddmisc-ready', fetchPageViews, { once: true });
+    window.addEventListener('oddmisc-ready', fetchPageViews);
+    document.addEventListener('swup:page:view', fetchPageViews);
+    document.addEventListener('swup:contentReplaced', fetchPageViews);
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', fetchPageViews);
     } else {

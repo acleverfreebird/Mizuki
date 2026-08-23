@@ -5,6 +5,7 @@ dist/
 .astro/
 demo
 plans
+.pnpm-store
 
 # dependencies
 node_modules/
